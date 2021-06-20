@@ -23,13 +23,11 @@ public class Student extends Person{
     private String studentID;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "subjects_id")
+    @Column(name = "subjects_taking")
     private String subjectsTaking;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "speciality", nullable = false)
+    @Column(name = "speciality")
     private String speciality;
 
     @Column(name = "class_number")

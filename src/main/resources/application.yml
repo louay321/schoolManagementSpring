@@ -22,7 +22,7 @@ spring:
     driverClassName: org.hsqldb.jdbc.JDBCDriver
     url: @develop.db.url@
     username: @develop.db.user@
-    password: @develop.db.passwd@
+    password: 'admin'
     data: classpath*:init.sql
   jpa:
     hibernate:
@@ -47,7 +47,7 @@ spring:
     driverClassName: org.postgresql.Driver
     url: @prod.db.url@
     username: @prod.db.user@
-    password: @prod.db.passwd@
+    password: 'admin'
 jpa:
   databasePlatform: org.hibernate.dialect.PostgreSQLDialect
   liquibase:
@@ -61,7 +61,7 @@ spring:
     driverClassName: org.hsqldb.jdbc.JDBCDriver
     url: @develop.db.url@
     username: @develop.db.user@
-    password: @develop.db.passwd@
+    password: 'admin'
   jpa:
     show-sql: true
   liquibase:

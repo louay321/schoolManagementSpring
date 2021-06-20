@@ -5,7 +5,7 @@ create table Student (
      created timestamp,
      updated timestamp,
      first_name varchar(20) not null,
-     last_name varchar(20) not null,,
+     last_name varchar(20) not null,
      address varchar(50) not null,
      primary key (id)
 );
@@ -60,11 +60,6 @@ create table user_roles (
 );
 
 
-alter table Student add constraint UK_Unique_id unique (id);
-
-alter table Teacher add constraint UK_Unique_id unique (id);
-
-alter table Subject add constraint UK_Unique_id unique (id);
 
 
 alter table user_roles add constraint FK_user_role_role_id foreign key (role_id) references roles

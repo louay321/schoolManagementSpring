@@ -20,7 +20,15 @@ public class Teacher extends Person {
     @Column(name = "teacher_id", nullable = false, unique = true)
     private String teacherID;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @Column(name = "primary_subject", nullable = false)
+    private String primarySubject;
+
+    @Column(name = "secondary_subject")
+    private String secondarySubject;
+
+    @Column(name = "students_supervising")
+    private String studentsSupervising;
+    /*@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "primary_subject", nullable = false)
     private Subject primarySubject;
@@ -37,5 +45,5 @@ public class Teacher extends Person {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "student_id")
     private Student studentsSupervising;
-
+*/
 }
