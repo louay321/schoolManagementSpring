@@ -1,0 +1,45 @@
+<#import "/spring.ftl" as spring/>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>new teacher</title>
+</head>
+<body>
+<div>
+    <h2>Add a teacher</h2>
+    <div>
+        <div>
+            <@spring.bind "teacher"/>
+            <form action="/teachers/add" method="post">
+                <div>
+                    <div>
+                        Student's ID:
+                        <@spring.formInput "teacher.TeacherID"/>
+                    </div>
+                    <div>
+                        First Name:
+                        <@spring.formInput "teacher.FirstName"/>
+                    </div>
+                    <div>
+                        Last Name:
+                        <@spring.formInput "teacher.LastName"/>
+                    </div>
+                    <div>
+                        Main Subject :
+                        <@spring.formInput "teacher.PrimarySubject"/>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <input type="submit" value="Add Teacher">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
