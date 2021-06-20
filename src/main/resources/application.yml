@@ -1,0 +1,69 @@
+server:
+  port: @server.port@
+
+spring:
+  application:
+    name: @project.artifactId@
+    description: @project.description@
+    version: @project.version@
+  freemarker:
+    template-loader-path: classpath:/templates
+    suffix: .ftlh
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  liquibase:
+    contexts: develop
+    change-log: classpath:db/master_develop.xml
+
+---
+spring:
+  profiles: develop
+  datasource:
+    driverClassName: org.hsqldb.jdbc.JDBCDriver
+    url: @develop.db.url@
+    username: @develop.db.user@
+    password: @develop.db.passwd@
+    data: classpath*:init.sql
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  liquibase:
+    contexts: develop
+    change-log: classpath:db/master_develop.xml
+
+logging:
+  level:
+    org:
+      springframework: INFO
+      hibernate:
+        SQL: DEBUG
+        type: TRACE
+
+---
+spring:
+  profiles: prod
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: @prod.db.url@
+    username: @prod.db.user@
+    password: @prod.db.passwd@
+jpa:
+  databasePlatform: org.hibernate.dialect.PostgreSQLDialect
+  liquibase:
+    contexts: develop
+    change-log: classpath:db/master_develop.xml
+
+---
+spring:
+  profiles: liquibase
+  datasource:
+    driverClassName: org.hsqldb.jdbc.JDBCDriver
+    url: @develop.db.url@
+    username: @develop.db.user@
+    password: @develop.db.passwd@
+  jpa:
+    show-sql: true
+  liquibase:
+    contexts: develop
+    change-log: classpath:db/master_develop.xml
